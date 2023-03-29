@@ -4,6 +4,7 @@ import Feed from "./component/Feed"
 import Rightbar from "./component/Rightbar"
 import Navbar from './component/Navbar'
 import { Box, Container, Stack } from '@mui/system'
+import { Add } from '@mui/icons-material'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Feed/>
       <Rightbar/>
      </Stack>
+     <Add/>
     </Box>
   )
 }

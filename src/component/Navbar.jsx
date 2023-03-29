@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
   styled,
   Typography,
   InputBase,
+  Menu,
+  MenuItem 
 } from "@mui/material";
 // import PetsIcon from '@mui/icons-material/Pets';
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -27,9 +29,25 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const Icons = styled("Box")(({ theme }) => ({
+  display: 'none',
+  alignItems:'center',
+  gap:'20px',
+  [theme.breakpoints.up("sm")]:{
+    display: "flex"
+  }
+}));
+
+const UserBox = styled("Box")(({ theme }) => ({
+  display: 'flex',
+  alignItems:'center',
+  gap:'10px',
+  [theme.breakpoints.up("sm")]:{
+    display: "none"
+  }
 }));
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
     <AppBar position="sticky">
       <TB>
@@ -47,9 +65,35 @@ function Navbar() {
           <Badge badgeContent={4} color="error"> 
           <Notifications/>
           </Badge>
-          <Avatar sx={{width:30, height:30}} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
+          <Avatar sx={{width:40, height:40}} onClick={(e)=>setOpen(true)} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
         </Icons>
+
+        <UserBox onClick={(e)=>setOpen(true)} >
+        <Avatar sx={{width:40, height:40}} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
+          <Typography variant="span">Punpun</Typography>
+
+        </UserBox>
       </TB>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        // ให้อ้างอิงจาก state
+        open={open}
+        //=====================
+        onClose={(e) => setOpen(false)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 }
