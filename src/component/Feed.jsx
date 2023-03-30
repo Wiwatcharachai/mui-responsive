@@ -1,15 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Checkbox,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import {Box} from "@mui/material";
 import React from "react";
 import Post from "./post";
 

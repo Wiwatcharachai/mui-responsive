@@ -11,7 +11,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import Brightness3Icon from '@mui/icons-material/Brightness3';
-function Sidebar() {
+
+function Sidebar({mode, setMode}) {
   return (
     <Box
       flex={1}
@@ -88,7 +89,7 @@ function Sidebar() {
             <ListItemIcon>
               <Brightness3Icon />
             </ListItemIcon>
-            <Switch/>
+            <Switch onChange={(e)=>setMode(mode === 'light' ? 'dark' : 'light')}/>
           </ListItemButton>
         </ListItem>
 
